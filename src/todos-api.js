@@ -18,5 +18,52 @@ export function signIn(userData) {
     }
 }
 
+export function fetchTodos() {
+    const token = localStorage.getItem('token');
+
+    try {
+        return request
+            .get(`${URL}/api/todos`)
+            .set('Authorization', token);
+    } catch(e) {
+        return { error: e.message }
+    }
+}
+
+export function fetchTodos(id) {
+    const token = localStorage.getItem('token');
+
+    try {
+        return request
+            .get(`${URL}/api/todos/${id}`)
+            .set('Authorization', token);
+    } catch(e) {
+        return { error: e.message }
+    }
+}
+
+export function createTodos(todosData) {
+    const token = localStorage.getItem('token');
+
+    try {
+        return request
+            .post(`${URL}/api/todos`, todosData)
+            .set('Authorization', token);
+    } catch(e) {
+        return { error: e.message }
+    }
+}
+
+export function updateTodos(id, updatedTodos) {
+    const token = localStorage.getItem('token');
+
+    try {
+        return request
+            .put(`${URL}/api/todos/${id}`, updatedTodos)
+            .set('Authorization', token);
+    } catch(e) {
+        return { error: e.message }
+    }
+}
 
 
