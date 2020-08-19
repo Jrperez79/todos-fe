@@ -66,4 +66,16 @@ export function updateTodos(id, updatedTodos) {
     }
 }
 
+export function deleteTodos(id) {
+    const token = localStorage.getItem('token');
+
+    try {
+        return request
+            .delete(`${URL}/api/todos/${id}`)
+            .set('Authorization', token);
+    } catch(e) {
+        return { error: e.message }
+    }
+}
+
 
