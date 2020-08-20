@@ -19,7 +19,7 @@ export function signIn(userData) {
 }
 
 export function fetchTodos() {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('TOKEN');
 
     try {
         return request
@@ -31,7 +31,7 @@ export function fetchTodos() {
 }
 
 export function fetchTodosItem(id) {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('TOKEN');
 
     try {
         return request
@@ -43,7 +43,7 @@ export function fetchTodosItem(id) {
 }
 
 export function createTodos(todosData) {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('TOKEN');
 
     try {
         return request
@@ -55,7 +55,7 @@ export function createTodos(todosData) {
 }
 
 export function updateTodos(id, updatedTodos) {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('TOKEN');
 
     try {
         return request
@@ -67,7 +67,7 @@ export function updateTodos(id, updatedTodos) {
 }
 
 export function deleteTodos(id) {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('TOKEN');
 
     try {
         return request
