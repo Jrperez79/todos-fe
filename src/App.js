@@ -32,7 +32,7 @@ export default class App extends Component {
       <header>
     <Router>
       <main>
-      <div>
+      <div className="header">
           {
             this.state.token && 
             <>

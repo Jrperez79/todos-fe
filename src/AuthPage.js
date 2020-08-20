@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { signUp, signIn } from './todos-api.js';
+import './App.css';
 
 export default class AuthPage extends Component {
     state = {
@@ -35,7 +36,7 @@ export default class AuthPage extends Component {
     
     render() {
         return (
-            <div>
+            <div className="sign">
                 <form onSubmit={this.handleSignIn}>
                     Sign-In <br/>
                     <label>

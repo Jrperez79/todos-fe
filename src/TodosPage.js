@@ -69,14 +69,14 @@ export default class TodosPage extends Component {
     render() {
         return (
             <div>
-                ToDo List
-                <div>
+                <h2 className="title">Your ToDo List</h2>
+                <div className="todo-list">
                     {
                         this.state.todos.map((todo) => {
                             if(todo.completed === false) {
                                 return <div>
                                     <p>Todo Item: {todo.todo}</p>
-                                    <button onClick={() => this.handleCompletedTodo(todo.id, todo)}>Mark Todo As Completed</button>
+                                    <button className="completed" onClick={() => this.handleCompletedTodo(todo.id, todo)}>Mark Todo As Completed</button>
                                     <button onClick={() => this.handleDelete(todo.id)}>Delete Todo Item</button>
                                 </div>
                             } else {
@@ -89,8 +89,8 @@ export default class TodosPage extends Component {
                     }
                 </div>
                 <div>
-                    Add A Todo List Item
-                    <form onSubmit={this.handleSubmit}>
+                    <h4 className="add-todo-title">Add A Todo List Item</h4>
+                    <form className="add-todo" onSubmit={this.handleSubmit}>
                         <label>
                             Todo Item: 
                             <input onChange={this.handleTodoListChange}/>
