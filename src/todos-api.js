@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-const URL = process.env.REACT_APP_API_URL;
+const URL = 'http://localhost:3000';
 
 export function signUp(userData) {
     try {
@@ -30,7 +30,7 @@ export function fetchTodos() {
     }
 }
 
-export function fetchTodos(id) {
+export function fetchTodosItem(id) {
     const token = localStorage.getItem('token');
 
     try {

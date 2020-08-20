@@ -18,7 +18,7 @@ export default class AuthPage extends Component {
         });
 
         this.props.handleToken(user.body.token);
-        this.props.history.push('/');
+        this.props.history.push('/todos');
     }
 
     handleSignIn = async (e) => {
@@ -30,34 +30,34 @@ export default class AuthPage extends Component {
         });
 
         this.props.handleToken(user.body.token);
-        this.props.history.push('/');
+        this.props.history.push('/todos');
     }
     
     render() {
         return (
             <div>
                 <form onSubmit={this.handleSignIn}>
-                    Sign-In
+                    Sign-In <br/>
                     <label>
                         Email
                         <input onChange={e => this.setState({ signInEmail: e.target.value })} value={this.state.signInEmail}/>
-                    </label>
+                    </label><br/>
                     <label>
                         Password
                         <input onChange={e => this.setState({ signInPassword: e.target.value })} value={this.state.signInPassword}/>
-                    </label>
+                    </label><br/>
                     <button>Submit</button>
                 </form>
                 <form onSubmit={this.handleSignUp}>
-                    Sign-Up
+                    Sign-Up <br/>
                     <label>
                         Email
                         <input onChange={e => this.setState({ signUpEmail: e.target.value })} value={this.state.signUpEmail}/>
-                    </label>
+                    </label><br/>
                     <label>
                         Password
                         <input onChange={e => this.setState({ signUpPassword: e.target.value })} value={this.state.signUpPassword}/>
-                    </label>
+                    </label><br/>
                     <button>Submit</button>
                 </form>
             </div>
