@@ -1,26 +1,72 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
+import {
+  BrowserRouter as Router,
+  Route, 
+  Switch,
+  Link
+} from 'react-router-dom';
+import AuthPage from './AuthPage.js';
+import HomePage from './HomePage.js';
+import TodosPage from './TodosPage.js';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends Component {
+  state = {
+    token: localStorage.getItem('TOKEN')
+  }
 
-export default App;
+  handleToken = (token) => {
+    this.setState({ token: token })
+
+    localStorage.setItem('TOKEN', token)
+  }
+
+  handleSignOut = () => {
+    this.setState({ token: '' });
+
+    localStorage.setItem( 'TOKEN', '')
+  }
+  render() {
+  return (
+    <div>
+      <header>
+    <Router>
+      <main>
+      <div className="header">
+          {
+            this.state.token && 
+            <>
+            <Link to='/todos'>Go To Your Todos List</Link>
+            <Link to='/'>Home</Link>
+            <Link to='/login'>
+                <button onClick={this.handleSignOut}>Log Out</button>
+            </Link>
+            </>
+          }
+      </div>
+      <div>
+      <Switch>
+        <Route 
+            path="/" 
+            exact
+            render={(routerProps) => <HomePage {...routerProps} />} 
+        />
+        <Route 
+            path="/login" 
+            exact
+            render={(routerProps) => <AuthPage handleToken={this.handleToken} token={this.state.token} {...routerProps} />} 
+        />
+        <Route 
+            path="/todos" 
+            exact
+            render={(routerProps) => <TodosPage token={this.state.token} {...routerProps} />} 
+        />
+      </Switch>
+      </div>
+      </main>
+    </Router>
+  </header>
+  </div>
+  );
+  }
+}
