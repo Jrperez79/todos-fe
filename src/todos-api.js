@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-const URL = 'http://localhost:3000';
+const URL = 'https://guarded-taiga-47540.herokuapp.com';
 
 export function signUp(userData) {
     try {
