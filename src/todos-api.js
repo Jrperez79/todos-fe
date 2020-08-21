@@ -1,3 +1,4 @@
+
 import request from 'superagent';
 
 const URL = 'https://guarded-taiga-47540.herokuapp.com';
@@ -5,7 +6,7 @@ const URL = 'https://guarded-taiga-47540.herokuapp.com';
 export function signUp(userData) {
     try {
         return request.post(`${URL}/auth/signup`, userData);
-    } catch(e) {
+    } catch(e) { // eslint-disable-next-line
         throw { error: e.message }
     }
 }
@@ -13,7 +14,7 @@ export function signUp(userData) {
 export function signIn(userData) {
     try {
         return request.post(`${URL}/auth/signin`, userData);
-    } catch(e) {
+    } catch(e) { // eslint-disable-next-line
         throw { error: e.message }
     }
 }
